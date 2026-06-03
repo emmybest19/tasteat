@@ -1,65 +1,214 @@
-import Image from "next/image";
+import Link from "next/link";
+import { siteConfig, whatsappLink } from "@/config/site";
+import { CATEGORIES, getFeaturedProducts } from "@/data/products";
+import ProductCard from "@/components/ProductCard";
+import HeroCarousel, { type Slide } from "@/components/HeroCarousel";
+import LocationMap from "@/components/LocationMap";
+import FadeIn from "@/components/motion/FadeIn";
+import Reveal from "@/components/motion/Reveal";
+import { Stagger, StaggerItem } from "@/components/motion/Stagger";
+import { IoCall } from "react-icons/io5";
+// Hero carousel slides — real photos from /public/images.
+const heroSlides: Slide[] = [
+  {
+    src: "/images/akara.jpeg",
+    emoji: "🫘",
+    title: "Akara",
+    subtitle: "Crispy golden bean cakes",
+  },
+  {
+    src: "/images/pap.jpeg",
+    emoji: "🥣",
+    title: "Pap",
+    subtitle: "Smooth, creamy & comforting",
+  },
+  {
+    src: "/images/masa.jpeg",
+    emoji: "🍢",
+    title: "Masa & Soup",
+    subtitle: "A Northern favorite",
+  },
+  {
+    src: "/images/moi.jpeg",
+    emoji: "🍮",
+    title: "Moi Moi",
+    subtitle: "Savory steamed bean pudding",
+  },
+  {
+    src: "/images/golden-yam.jpeg",
+    emoji: "🍠",
+    title: "Golden Yam",
+    subtitle: "Fried golden with egg",
+  },
+  {
+    src: "/images/friend-yam1.jpeg",
+    emoji: "🍟",
+    title: "Yam Fries",
+    subtitle: "Crispy, fresh & spiced",
+  },
+  {
+    src: "/images/yaji.jpeg",
+    emoji: "🌶️",
+    title: "Yaji",
+    subtitle: "Our signature suya spice",
+  },
+];
+
+const categoryBlurbs: Record<string, string> = {
+  Breakfast: "Akara, pap, moi moi & golden yam",
+  Northern: "Masa & soup, the Northern favorite",
+  "Snacks & Sides": "Yam, potato & plantain fries",
+  Spices: "Our signature yaji blend",
+};
 
 export default function Home() {
+  const featured = getFeaturedProducts();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-linear-to-br from-brand-600 via-brand-700 to-brand-900">
+        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 sm:py-24 md:grid-cols-2 md:items-center">
+          <div className="text-white">
+            <FadeIn>
+              <span className="inline-block rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold backdrop-blur">
+                🇳🇬 Made fresh, the Naija way
+              </span>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <h1 className="mt-5 text-4xl font-black leading-tight tracking-tight sm:text-5xl">
+                {siteConfig.tagline}
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="mt-4 max-w-md text-lg text-brand-100">
+                From steaming hot pap & golden akara to soft masa and crispy
+                fries, Tasteat serves the Nigerian street flavors you crave,
+                made fresh daily. Real taste. Real memories. Real Nigerian. At
+                Tasteat, we don’t just serve food,we serve comfort, culture, and
+                that unmistakable taste of home.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.3}>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href="/products"
+                  className="rounded-full bg-white px-6 py-3.5 font-bold text-brand-700 shadow-sm transition-transform hover:scale-105"
+                >
+                  Browse the menu
+                </Link>
+                <a
+                  href={whatsappLink(
+                    `Hi ${siteConfig.name}! I'd like to make an order.`,
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-call px-6 py-3.5 font-bold text-white shadow-sm transition-colors hover:bg-call-dark flex justify-center items-center gap-2"
+                >
+                  <span><IoCall /></span> Give us a call
+                </a>
+              </div>
+            </FadeIn>
+          </div>
+
+          <FadeIn
+            delay={0.25}
+            x={28}
+            className="flex justify-center md:justify-end"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <HeroCarousel slides={heroSlides} />
+          </FadeIn>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* Categories */}
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <Reveal>
+          <h2 className="text-2xl font-extrabold text-ink">
+            Explore by category
+          </h2>
+          <p className="mt-1 text-ink/60">Pick a craving and dive in.</p>
+        </Reveal>
+        <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {CATEGORIES.map((cat) => (
+            <StaggerItem key={cat}>
+              <Link
+                href={`/products?category=${encodeURIComponent(cat)}`}
+                className="block h-full rounded-2xl border border-line bg-surface p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-brand-300 hover:shadow-md"
+              >
+                <h3 className="text-lg font-bold text-primary">{cat}</h3>
+                <p className="mt-1 text-sm text-ink/60">
+                  {categoryBlurbs[cat]}
+                </p>
+              </Link>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </section>
+
+      {/* Featured */}
+      <section className="mx-auto max-w-6xl px-4 pb-4 sm:px-6">
+        <Reveal className="flex items-end justify-between">
+          <div>
+            <h2 className="text-2xl font-extrabold text-ink">
+              Customer favorites
+            </h2>
+            <p className="mt-1 text-ink/60">
+              The ones everyone keeps coming back for.
+            </p>
+          </div>
+          <Link
+            href="/products"
+            className="hidden text-sm font-semibold text-primary hover:underline sm:block"
+          >
+            See full menu →
+          </Link>
+        </Reveal>
+        <Stagger className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((product) => (
+            <StaggerItem key={product.id}>
+              <ProductCard product={product} />
+            </StaggerItem>
+          ))}
+        </Stagger>
+        <div className="mt-8 text-center sm:hidden">
+          <Link
+            href="/products"
+            className="font-semibold text-primary hover:underline"
+          >
+            See full menu →
+          </Link>
+        </div>
+      </section>
+
+      {/* CTA strip */}
+      <section className="mx-auto mt-12 max-w-6xl px-4 sm:px-6">
+        <Reveal>
+          <div className="rounded-3xl bg-accent-600 px-6 py-10 text-center text-white sm:py-12">
+            <h2 className="text-2xl font-extrabold sm:text-3xl">
+              Hungry already?
+            </h2>
+            <p className="mx-auto mt-2 max-w-md text-accent-50/90">
+              Give us a call on WhatsApp and your order will be on its way.
+            </p>
+            <a
+              href={whatsappLink(
+                `Hi ${siteConfig.name}! I'd like to make an order.`,
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-block rounded-full bg-white px-7 py-3.5 font-bold text-accent-700 transition-transform hover:scale-105"
+            >
+              📞 Call us on WhatsApp
+            </a>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Location map */}
+      <Reveal>
+        <LocationMap />
+      </Reveal>
+    </>
   );
 }

@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
+/* ── Brand theme (from the TastEat logo) ──────────────────────
+   brand-* = royal blue (primary)   accent-* = orange (secondary)
+   Semantic tokens: surface / line / primary / cream / ink. */
+@theme {
+  /* Primary — deep, mature navy (logo "TAST" + swoosh) */
+  --color-brand-50: #eef2f7;
+  --color-brand-100: #d6e0ec;
+  --color-brand-200: #aec3d9;
+  --color-brand-300: #7e9bbd;
+  --color-brand-400: #4f6f95;
+  --color-brand-500: #2f5077;
+  --color-brand-600: #234564;
+  --color-brand-700: #1c374f;
+  --color-brand-800: #182c3f;
+  --color-brand-900: #14222f;
+
+  /* Secondary / accent — orange (logo "EAT" + cross) */
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd2;
+  --color-accent-200: #fdd9a6;
+  --color-accent-300: #fbbf6d;
+  --color-accent-400: #f9a23d;
+  --color-accent-500: #f59324;
+  --color-accent-600: #e07c12;
+  --color-accent-700: #b9610f;
+  --color-accent-800: #934e14;
+  --color-accent-900: #6f3c13;
+
+  /* Semantic tokens (light defaults) */
+  --color-cream: #f5f3ec; /* page background */
+  --color-ink: #2b2b2b; /* body text */
+  --color-surface: #ffffff; /* cards, inputs, pills */
+  --color-surface-soft: #eef2f7; /* subtle hover background */
+  --color-surface-active: #d6e0ec; /* selected / active background */
+  --color-line: #e2e6ec; /* borders & dividers */
+  --color-primary: #234564; /* brand-colored text (headings, links) */
+
+  /* Call-to-action buttons — soft, charming teal */
+  --color-call: #2fa39a;
+  --color-call-dark: #258a82;
+
+  --font-sans: var(--font-poppins), system-ui, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #f5f3ec;
+  --foreground: #2b2b2b;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
