@@ -1,10 +1,28 @@
 ﻿import Link from "next/link";
+import type { IconType } from "react-icons";
+import {
+  FaInstagram,
+  FaFacebookF,
+  FaTiktok,
+  FaXTwitter,
+  FaYoutube,
+} from "react-icons/fa6";
 import { siteConfig, whatsappLink } from "@/config/site";
 import Logo from "./Logo";
 
+const socialMeta: Record<string, { label: string; Icon: IconType }> = {
+  instagram: { label: "Instagram", Icon: FaInstagram },
+  facebook: { label: "Facebook", Icon: FaFacebookF },
+  tiktok: { label: "TikTok", Icon: FaTiktok },
+  x: { label: "X", Icon: FaXTwitter },
+  youtube: { label: "YouTube", Icon: FaYoutube },
+};
+
 export default function Footer() {
   const year = new Date().getFullYear();
-  const socials = Object.entries(siteConfig.socials).filter(([, url]) => url);
+  const socials = Object.entries(siteConfig.socials).filter(
+    ([name, url]) => url && socialMeta[name],
+  );
 
   return (
     <footer className="mt-16 border-t border-line bg-brand-900 text-brand-100">
@@ -14,6 +32,33 @@ export default function Footer() {
             <Logo className="h-14 w-auto" />
           </div>
           <p className="mt-4 max-w-xs text-sm text-brand-200">{siteConfig.tagline}</p>
+
+          {socials.length > 0 && (
+            <div className="mt-5">
+              <h3 className="text-sm font-bold uppercase tracking-wide text-white">
+                Follow us
+              </h3>
+              <ul className="mt-3 flex flex-wrap gap-3">
+                {socials.map(([name, url]) => {
+                  const { label, Icon } = socialMeta[name];
+                  return (
+                    <li key={name}>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        title={label}
+                        className="grid h-10 w-10 place-items-center rounded-full bg-brand-800 text-brand-100 transition-colors hover:bg-accent-500 hover:text-white"
+                      >
+                        <Icon size={18} />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div>
@@ -44,17 +89,6 @@ export default function Footer() {
               </a>
             </li>
           </ul>
-          {socials.length > 0 && (
-            <ul className="mt-4 flex gap-4 text-sm capitalize">
-              {socials.map(([name, url]) => (
-                <li key={name}>
-                  <a href={url} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                    {name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
       </div>
 

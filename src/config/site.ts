@@ -13,7 +13,7 @@ export const siteConfig = {
   // Local 09077227261 -> drop the leading 0, prepend 234 -> "2349077227261"
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "2349077227261",
 
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@tasteat.com",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "tamivikc@gmail.com",
 
   // Eatery location — shown on the home page map.
   // address  = the text displayed to customers.
@@ -24,11 +24,14 @@ export const siteConfig = {
     mapQuery: process.env.NEXT_PUBLIC_MAP_QUERY ?? "Abuja, Nigeria",
   },
 
-  // Social / external links (optional — leave empty to hide).
+  // Social media links — paste your full profile URLs here.
+  // Leave any platform as "" and its icon simply won't show.
   socials: {
-    instagram: "",
-    facebook: "",
-    tiktok: "",
+    instagram: "", // e.g. "https://instagram.com/tasteat"
+    facebook: "", // e.g. "https://facebook.com/tasteat"
+    tiktok: "", // e.g. "https://tiktok.com/@tasteat"
+    x: "", // e.g. "https://x.com/tasteat"
+    youtube: "", // e.g. "https://youtube.com/@tasteat"
   },
 
   // EmailJS — used by the contact & complaint forms.
