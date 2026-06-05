@@ -27,7 +27,7 @@ export const siteConfig = {
   // Social media links — paste your full profile URLs here.
   // Leave any platform as "" and its icon simply won't show.
   socials: {
-    instagram: "", // e.g. "https://instagram.com/tasteat"
+    instagram: "https://www.instagram.com/tasteat.akara?igsh=MzY1MzlodDB6dmpx&utm_source=qr", // e.g. "https://instagram.com/tasteat"
     facebook: "", // e.g. "https://facebook.com/tasteat"
     tiktok: "", // e.g. "https://tiktok.com/@tasteat"
     x: "", // e.g. "https://x.com/tasteat"
