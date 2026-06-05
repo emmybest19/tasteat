@@ -5,7 +5,8 @@ import Reveal from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Contact us",
-  description: "Get in touch with Tami-Vic — message us on WhatsApp, email, or send us a note.",
+  description: `Get in touch with ${siteConfig.name} — call us on WhatsApp, email, or send us a message.`,
+  alternates: { canonical: "/contact" },
 };
 
 const fields: Field[] = [

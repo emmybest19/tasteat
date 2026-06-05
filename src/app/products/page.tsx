@@ -2,10 +2,12 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { products } from "@/data/products";
 import ProductCatalog from "@/components/ProductCatalog";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Menu",
-  description: "Browse the full Tami-Vic menu — search, filter by category and order on WhatsApp.",
+  description: `Browse the full ${siteConfig.name} menu — search, filter by category, and order on WhatsApp.`,
+  alternates: { canonical: "/products" },
 };
 
 export default function ProductsPage() {

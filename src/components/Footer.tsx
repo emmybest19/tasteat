@@ -32,6 +32,10 @@ export default function Footer() {
             <Logo className="h-14 w-auto" />
           </div>
           <p className="mt-4 max-w-xs text-sm text-brand-200">{siteConfig.tagline}</p>
+          <p className="mt-2 max-w-xs text-xs text-brand-300">
+            TastEat Foods — authentic Nigerian comfort food (akara, pap, moi moi,
+            masa, golden yam &amp; yaji) freshly made in Abuja.
+          </p>
 
           {socials.length > 0 && (
             <div className="mt-5">

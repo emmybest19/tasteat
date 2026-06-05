@@ -7,7 +7,53 @@ export const siteConfig = {
   // tagline: "Breakfast, Akara & More.",
   tagline: "Bite Into Tradition ",
   description:
-    "TastEat serves freshly made Nigerian classics — akara, pap, moi moi, masa, golden yam, fries and our signature yaji. Browse the menu and order on WhatsApp.",
+    "TastEat Foods serves freshly made Nigerian classics in Abuja — akara, pap, moi moi, masa, golden yam, fries and our signature yaji. Browse the menu and order on WhatsApp.",
+
+  // Public site URL (used for SEO: canonical links, sitemap, social previews).
+  // Any trailing slash is stripped so generated URLs never double up ("//").
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tasteatfoods.com").replace(
+    /\/+$/,
+    "",
+  ),
+
+  // Other names people might search for this brand (helps Google connect them).
+  alternateNames: [
+    "TastEat Foods",
+    "Tasteat",
+    "Tasteat Foods",
+    "Taste Eat",
+    "TastEat Nigeria",
+    "TastEat Abuja",
+  ],
+
+  // Google Search Console verification token (the value from the
+  // "HTML tag" method). Set GOOGLE_SITE_VERIFICATION in your env.
+  googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION ?? "",
+
+  // Keywords help describe the business (used in metadata).
+  keywords: [
+    "TastEat",
+    "TastEat Foods",
+    "TastEatFoods",
+    "Tasteat",
+    "Taste Eat",
+    "tasteatfoods",
+    "TastEat Abuja",
+    "Nigerian food",
+    "Nigerian breakfast",
+    "akara",
+    "pap",
+    "moi moi",
+    "masa",
+    "golden yam",
+    "yam fries",
+    "yaji",
+    "suya spice",
+    "Naija breakfast",
+    "Abuja food",
+    "food delivery Abuja",
+    "order food on WhatsApp",
+  ],
 
   // WhatsApp number in international format: country code + number, digits only.
   // Local 09077227261 -> drop the leading 0, prepend 234 -> "2349077227261"

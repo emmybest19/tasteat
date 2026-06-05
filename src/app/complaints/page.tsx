@@ -5,7 +5,8 @@ import Reveal from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
   title: "Submit a complaint",
-  description: "Something not right with your order? Let TastEat know and we'll make it right.",
+  description: `Something not right with your order? Let ${siteConfig.name} know and we'll make it right.`,
+  alternates: { canonical: "/complaints" },
 };
 
 const fields: Field[] = [
