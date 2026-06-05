@@ -3,7 +3,7 @@
 // NEXT_PUBLIC_* env vars in .env.local — those take priority).
 
 export const siteConfig = {
-  name: "TastEat",
+  name: "TastEatFoods",
   // tagline: "Breakfast, Akara & More.",
   tagline: "Bite Into Tradition ",
   description:
