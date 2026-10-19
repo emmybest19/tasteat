@@ -33,6 +33,7 @@ export default function AssistantWidget() {
   useEffect(() => {
     if (open && messages.length === 0) {
       const g = getGreeting();
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setMessages([{ id: nextId++, role: "bot", text: g.text, actions: g.actions }]);
     }
   }, [open, messages.length]);
