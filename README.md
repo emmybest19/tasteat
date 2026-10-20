@@ -69,3 +69,9 @@ src/
 ```
 
 To add or edit a product, update `src/data/products.ts`. Product photos go in `public/products`.
+## Further reading
+- [Case study](CASE_STUDY.md)
+- [Trade-offs](TRADEOFFS.md)
+
+## License
+MIT
